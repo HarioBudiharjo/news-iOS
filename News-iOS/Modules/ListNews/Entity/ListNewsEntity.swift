@@ -13,3 +13,7 @@ struct News {
     var author: String
     var description: String
 }
+
+struct ListNewsDao: Decodable {
+    
+}

@@ -19,11 +19,11 @@ protocol ListNewsPresenter: AnyObject {
 
 protocol ListNewsInteractor: AnyObject {
     var output: ListNewsInteractorOutput? { get set }
-    func getListNews()
+    func getListNews(category: String)
 }
 
 protocol ListNewsInteractorOutput: AnyObject {
-    func requestSuccess()
+    func requestSuccess(data: ListNewsDao)
 }
 
 protocol ListNewsViewOutput: AnyObject {

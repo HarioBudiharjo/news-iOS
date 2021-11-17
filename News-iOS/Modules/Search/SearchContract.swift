@@ -19,11 +19,11 @@ protocol SearchPresenter: AnyObject {
 
 protocol SearchInteractor: AnyObject {
     var output: SearchInteractorOutput? { get set }
-    func getListNews()
+    func getListNews(search: String)
 }
 
 protocol SearchInteractorOutput: AnyObject {
-    func requestSuccess()
+    func requestSuccess(data: SearchDao)
 }
 
 protocol SearchViewOutput: AnyObject {

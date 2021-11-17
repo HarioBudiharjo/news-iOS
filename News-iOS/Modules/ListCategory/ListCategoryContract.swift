@@ -23,7 +23,7 @@ protocol ListCategoryInteractor: AnyObject {
 }
 
 protocol ListCategoryInteractorOutput: AnyObject {
-    func requestSuccess()
+    func requestSuccess(data: [String])
 }
 
 protocol ListCategoryViewOutput: AnyObject {

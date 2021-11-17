@@ -12,7 +12,8 @@ class ListCategoryInteractorImpl: ListCategoryInteractor {
     var output: ListCategoryInteractorOutput?
     
     func getListCategory() {
-        
+        let category: [String] = ["business","entertainment","general","health","science","sports","technology"]
+        self.output?.requestSuccess(data: category)
     }
 }
 
