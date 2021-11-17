@@ -10,5 +10,24 @@ import UIKit
 
 class SearchViewController: UIViewController {
     
+    var data: [News] = []
+    
 }
 
+extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ListNewsCell.self), for: indexPath) as! ListNewsCell
+        cell.setView(data: data[indexPath.row])
+        return cell
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //MARK: Navigation
+    }
+    
+}

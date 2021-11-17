@@ -6,3 +6,10 @@
 //
 
 import Foundation
+
+struct News {
+    var image: String
+    var title: String
+    var author: String
+    var description: String
+}

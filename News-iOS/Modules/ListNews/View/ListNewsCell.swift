@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ListNewsCell: UITableViewCell {
 
@@ -14,4 +15,10 @@ class ListNewsCell: UITableViewCell {
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    func setView(data: News) {
+        self.newsImage.sd_setImage(with: URL(string: data.image), placeholderImage: UIImage(named: "AppIcon"))
+        self.titleLabel.text = data.title
+        self.authorLabel.text = data.author
+        self.descriptionLabel.text = data.description
+    }
 }
