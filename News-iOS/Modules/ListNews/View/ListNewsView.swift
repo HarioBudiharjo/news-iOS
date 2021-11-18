@@ -20,6 +20,9 @@ class ListNewsViewController: UIViewController {
         super.viewDidLoad()
         self.title = "News"
         
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
         let listNewsCell = UINib(nibName: String(describing: ListNewsCell.self), bundle: nil)
         self.tableView.register(listNewsCell, forCellReuseIdentifier: String(describing: ListNewsCell.self))
         
@@ -45,7 +48,10 @@ extension ListNewsViewController: UITableViewDataSource, UITableViewDelegate {
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //MARK: Navigation
+        let urlArticles = data[indexPath.row].url
+        if let url = URL(string: urlArticles) {
+            UIApplication.shared.open(url)
+        }
     }
     
 }
@@ -54,7 +60,7 @@ extension ListNewsViewController: ListNewsViewOutput {
     func showData(data: ListNewsDao) {
         self.data.removeAll()
         data.articles?.forEach({ article in
-            let data = News(image: article.urlToImage ?? "", title: article.title ?? "", author: article.author ?? "", description: article.articleDescription ?? "")
+            let data = News(image: article.urlToImage ?? "", title: article.title ?? "", author: article.author ?? "", description: article.articleDescription ?? "", url: article.url ?? "")
             self.data.append(data)
         })
         self.tableView.reloadData()
