@@ -21,12 +21,16 @@ class ListCategoryPresenterImpl {
 }
 
 extension ListCategoryPresenterImpl: ListCategoryPresenter {
+    func goToSeach(_ caller: UIViewController) {
+        self.router?.goToSeach(caller)
+    }
+    
     func getListCategory() {
         self.interactor?.getListCategory()
     }
     
-    func goToNews(_ caller: UIViewController) {
-        self.router?.goToNews(caller)
+    func goToNews(_ caller: UIViewController, category: String) {
+        self.router?.goToNews(caller, category: category)
     }
 }
 

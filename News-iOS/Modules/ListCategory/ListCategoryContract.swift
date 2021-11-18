@@ -9,12 +9,14 @@ import Foundation
 import UIKit
 
 protocol ListCategoryRouter: AnyObject {
-    func goToNews(_ caller: UIViewController)
+    func goToNews(_ caller: UIViewController, category: String)
+    func goToSeach(_ caller: UIViewController)
 }
 
 protocol ListCategoryPresenter: AnyObject {
-    func goToNews(_ caller: UIViewController)
+    func goToNews(_ caller: UIViewController, category: String)
     func getListCategory()
+    func goToSeach(_ caller: UIViewController)
 }
 
 protocol ListCategoryInteractor: AnyObject {

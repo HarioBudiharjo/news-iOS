@@ -20,8 +20,8 @@ class ListNewsPresenterImpl {
 }
 
 extension ListNewsPresenterImpl: ListNewsPresenter {
-    func goToNews(_ caller: UIViewController) {
-        self.router?.goToNews(caller)
+    func goToNews(_ caller: UIViewController, id: String) {
+        self.router?.goToNews(caller, id: id)
     }
     
     func getListNews(category: String) {

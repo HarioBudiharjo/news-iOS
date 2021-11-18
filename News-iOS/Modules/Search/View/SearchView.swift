@@ -12,6 +12,11 @@ class SearchViewController: UIViewController {
     
     var data: [News] = []
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.title = "Search"
+    }
+    
 }
 
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {

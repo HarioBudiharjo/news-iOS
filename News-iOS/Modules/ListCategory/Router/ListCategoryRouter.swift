@@ -13,7 +13,15 @@ class ListCategoryRouterImpl: ListCategoryRouter {
         
     }
     
-    func goToNews(_ caller: UIViewController) {
-        
+    func goToNews(_ caller: UIViewController, category: String) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "ListNewsViewController") as! ListNewsViewController
+        vc.category = category
+        caller.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func goToSeach(_ caller: UIViewController) {
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "SearchViewController") as! SearchViewController
+        caller.navigationController?.pushViewController(vc, animated: true)
+    }
+    
 }
