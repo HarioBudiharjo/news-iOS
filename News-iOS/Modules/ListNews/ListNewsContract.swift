@@ -14,7 +14,7 @@ protocol ListNewsRouter: AnyObject {
 
 protocol ListNewsPresenter: AnyObject {
     func goToNews(_ caller: UIViewController)
-    func getListNews()
+    func getListNews(category: String)
 }
 
 protocol ListNewsInteractor: AnyObject {
@@ -27,5 +27,5 @@ protocol ListNewsInteractorOutput: AnyObject {
 }
 
 protocol ListNewsViewOutput: AnyObject {
-    func showData()
+    func showData(data: ListNewsDao)
 }

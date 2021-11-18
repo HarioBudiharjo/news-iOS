@@ -27,5 +27,5 @@ protocol ListCategoryInteractorOutput: AnyObject {
 }
 
 protocol ListCategoryViewOutput: AnyObject {
-    func showData()
+    func showData(data: [String])
 }

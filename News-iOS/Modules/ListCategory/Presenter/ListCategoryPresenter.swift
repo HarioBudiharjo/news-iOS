@@ -8,12 +8,32 @@
 import Foundation
 import UIKit
 
-class ListCategoryPresenterImpl: ListCategoryPresenter {
+class ListCategoryPresenterImpl {
+    weak private var view: ListCategoryViewOutput?
+    private let interactor: ListCategoryInteractor?
+    private let router: ListCategoryRouter?
+    
+    init(view: ListCategoryViewOutput?, interactor: ListCategoryInteractor?, router: ListCategoryRouter?) {
+        self.view = view
+        self.interactor = interactor
+        self.router = router
+    }
+}
+
+extension ListCategoryPresenterImpl: ListCategoryPresenter {
     func getListCategory() {
-        
+        self.interactor?.getListCategory()
     }
     
     func goToNews(_ caller: UIViewController) {
-        
+        self.router?.goToNews(caller)
     }
+}
+
+extension ListCategoryPresenterImpl: ListCategoryInteractorOutput {
+    func requestSuccess(data: [String]) {
+        self.view?.showData(data: data)
+    }
+    
+    
 }

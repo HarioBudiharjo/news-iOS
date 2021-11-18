@@ -14,7 +14,7 @@ protocol SearchRouter: AnyObject {
 
 protocol SearchPresenter: AnyObject {
     func goToNews(_ caller: UIViewController)
-    func getListNews()
+    func getListNews(search: String)
 }
 
 protocol SearchInteractor: AnyObject {
@@ -27,5 +27,5 @@ protocol SearchInteractorOutput: AnyObject {
 }
 
 protocol SearchViewOutput: AnyObject {
-    func showData()
+    func showData(data: SearchDao)
 }
