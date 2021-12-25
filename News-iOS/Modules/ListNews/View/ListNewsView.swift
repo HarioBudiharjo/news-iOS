@@ -11,6 +11,7 @@ class ListNewsViewController: UIViewController {
     
     var data: [News] = []
     var category = ""
+    var page = 1
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -31,7 +32,7 @@ class ListNewsViewController: UIViewController {
         self.presenter = ListNewsPresenterImpl(view: self, interactor: interactor, router: router)
         interactor.output = presenter
         
-        self.presenter?.getListNews(category: self.category)
+        self.presenter?.getListNews(category: self.category, page: page)
     }
 }
 
@@ -54,15 +55,22 @@ extension ListNewsViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row + 1 == data.count {
+            self.presenter?.getListNews(category: self.category, page: page)
+        }
+    }
+    
 }
 
 extension ListNewsViewController: ListNewsViewOutput {
     func showData(data: ListNewsDao) {
-        self.data.removeAll()
+//        self.data.removeAll()
         data.articles?.forEach({ article in
             let data = News(image: article.urlToImage ?? "", title: article.title ?? "", author: article.author ?? "", description: article.articleDescription ?? "", url: article.url ?? "")
             self.data.append(data)
         })
+        self.page = self.page + 1
         self.tableView.reloadData()
     }
 }

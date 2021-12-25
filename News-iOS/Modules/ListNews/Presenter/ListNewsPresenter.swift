@@ -24,8 +24,8 @@ extension ListNewsPresenterImpl: ListNewsPresenter {
         self.router?.goToNews(caller, id: id)
     }
     
-    func getListNews(category: String) {
-        self.interactor?.getListNews(category: category)
+    func getListNews(category: String, page: Int) {
+        self.interactor?.getListNews(category: category, page: page)
     }
 }
 

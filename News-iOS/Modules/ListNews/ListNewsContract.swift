@@ -15,12 +15,12 @@ protocol ListNewsRouter: AnyObject {
 
 protocol ListNewsPresenter: AnyObject {
     func goToNews(_ caller: UIViewController, id: String)
-    func getListNews(category: String)
+    func getListNews(category: String, page: Int)
 }
 
 protocol ListNewsInteractor: AnyObject {
     var output: ListNewsInteractorOutput? { get set }
-    func getListNews(category: String)
+    func getListNews(category: String, page: Int)
 }
 
 protocol ListNewsInteractorOutput: AnyObject {
